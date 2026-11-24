@@ -1,0 +1,29 @@
+<div class="kartu text-center">
+  <div class="text-7xl">🖐️</div>
+  <h2 class="judul mt-4">Verifikasi Sidik Jari / Wajah</h2>
+  <p class="mt-4 text-2xl text-slate-700">
+    BPJS mewajibkan verifikasi biometrik sebelum SEP dibuat.<br>
+    {{if or .TombolFinger .TombolFrista}}Tekan tombol di bawah untuk membuka aplikasi verifikasi BPJS.{{else}}Silakan lakukan verifikasi pada alat sidik jari / kamera Frista di samping anjungan.{{end}}
+  </p>
+  {{if .Status}}<p class="mt-4 rounded-xl bg-amber-100 px-5 py-3 text-xl text-amber-900">{{.Status}}</p>{{end}}
+  {{if .Gagal}}<p class="mt-3 text-xl text-red-700">Belum terverifikasi (percobaan {{.Gagal}} dari 3).</p>{{end}}
+  {{if or .TombolFinger .TombolFrista}}
+  <div class="mt-6 grid {{if and .TombolFinger .TombolFrista}}grid-cols-2{{else}}grid-cols-1{{end}} gap-4">
+    {{if .TombolFinger}}
+    <button hx-post="/buka-biometrik?app=fingerprint" hx-target="#statusAgent" hx-swap="innerHTML"
+            class="tombol bg-sky-700 py-6 text-3xl text-white active:bg-sky-900">Buka Sidik Jari</button>
+    {{end}}
+    {{if .TombolFrista}}
+    <button hx-post="/buka-biometrik?app=frista" hx-target="#statusAgent" hx-swap="innerHTML"
+            class="tombol bg-sky-700 py-6 text-3xl text-white active:bg-sky-900">Buka Frista (Wajah)</button>
+    {{end}}
+  </div>
+  <div id="statusAgent" class="mt-4"></div>
+  {{end}}
+  <div class="mt-8 grid grid-cols-3 gap-4">
+    <button hx-get="{{if .Kembali}}{{.Kembali}}{{else}}/jadwal{{end}}" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">← Kembali</button>
+    <button hx-post="/cek-biometrik" class="tombol col-span-2 bg-emerald-700 py-6 text-4xl text-white active:bg-emerald-900">
+      Saya Sudah Verifikasi
+    </button>
+  </div>
+</div>

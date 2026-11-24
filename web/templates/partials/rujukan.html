@@ -1,0 +1,28 @@
+<div class="kartu">
+  <h2 class="judul">{{.Judul}}</h2>
+  <p class="mt-2 text-xl text-slate-600">Pilih rujukan yang akan digunakan hari ini</p>
+  <div class="mt-6 grid max-h-[55vh] gap-4 overflow-y-auto">
+    {{range .List}}
+      {{if .Berlaku}}
+      <button hx-post="/pilih-rujukan" hx-vals='{"no":"{{.NoKunjungan}}"}' class="tombol pilihan">
+        {{.PoliRujukan.Nama}}
+        <span class="sub">No. {{.NoKunjungan}} · {{.ProvPerujuk.Nama}}</span>
+        <span class="sub">Diagnosa: {{.Diagnosa.Kode}} {{.Diagnosa.Nama}} · berlaku s/d {{.BerlakuSampai}}</span>
+      </button>
+      {{else}}
+      <div class="rounded-2xl bg-slate-200 px-6 py-5 text-left text-2xl text-slate-500">
+        {{.PoliRujukan.Nama}} — <b>kedaluwarsa</b>
+        <span class="block text-lg">No. {{.NoKunjungan}} · {{.ProvPerujuk.Nama}} · berakhir {{.BerlakuSampai}}</span>
+      </div>
+      {{end}}
+    {{else}}
+      <div class="rounded-2xl bg-amber-100 px-6 py-8 text-center text-2xl text-amber-900">
+        Tidak ada rujukan aktif.<br>Silakan ke loket pendaftaran.
+      </div>
+    {{end}}
+  </div>
+  <div class="mt-8 grid grid-cols-2 gap-4">
+    <button hx-get="/jenis" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">← Kembali</button>
+    <button hx-get="/batal" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">Batal</button>
+  </div>
+</div>

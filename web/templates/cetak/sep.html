@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>SEP {{.S.NoSep}}</title>
+<!-- Tata letak disalin dari report/rptBridgingSEP2.jrxml SIMRS Khanza (595 x 390 pt, margin 20/42/20/20, Tahoma) -->
+<style>
+  @page { size: 595pt 390pt; margin: 0; }
+  html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+  .hal { position: relative; width: 595pt; height: 390pt; box-sizing: border-box; padding: 20pt 20pt 20pt 42pt; overflow: hidden; }
+  .isi { position: relative; width: 533pt; height: 350pt; }
+  .e { position: absolute; font-family: Tahoma, Verdana, sans-serif; line-height: 1.15; white-space: nowrap; overflow: hidden; }
+  .e.wrap { white-space: normal; }
+  .e img { width: 100%; height: 100%; object-fit: contain; object-position: left center; }
+</style>
+</head>
+<body>
+<div class="hal"><div class="isi">
+    <div class="e" style="left:75pt;top:90pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.NoSep}}</div>
+    <div class="e" style="left:0pt;top:90pt;width:67pt;height:13pt;font-size:10pt;text-align:left">No. SEP</div>
+    <div class="e" style="left:68pt;top:90pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:75pt;top:104pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.TglSep}}</div>
+    <div class="e" style="left:0pt;top:104pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Tgl. SEP</div>
+    <div class="e" style="left:68pt;top:104pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:75pt;top:118pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.NoKartu}} ( MR : {{.S.NoMR}} )</div>
+    <div class="e" style="left:0pt;top:118pt;width:67pt;height:13pt;font-size:10pt;text-align:left">No. Kartu</div>
+    <div class="e" style="left:68pt;top:118pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:68pt;top:132pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:75pt;top:132pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.NamaPasien}}</div>
+    <div class="e" style="left:0pt;top:132pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Nama Peserta</div>
+    <div class="e" style="left:0pt;top:146pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Tgl. Lahir</div>
+    <div class="e" style="left:75pt;top:146pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.TglLahir}}</div>
+    <div class="e" style="left:68pt;top:146pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:0pt;top:160pt;width:67pt;height:13pt;font-size:10pt;text-align:left">No.Telepon</div>
+    <div class="e" style="left:75pt;top:160pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.NoTelep}}</div>
+    <div class="e" style="left:68pt;top:160pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:68pt;top:174pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:75pt;top:174pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.NmPoliTujuan}}</div>
+    <div class="e" style="left:0pt;top:174pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Sub/Spesialis</div>
+    <div class="e" style="left:48pt;top:32pt;width:484pt;height:18pt;font-size:13pt;text-align:center">SURAT ELEGIBILITAS PESERTA</div>
+    <div class="e" style="left:48pt;top:53pt;width:484pt;height:17pt;font-size:11pt;text-align:center">{{.RS}}</div>
+    <div class="e wrap" style="left:0pt;top:32pt;width:141pt;height:38pt;font-size:10pt;text-align:left">{{if .Logo}}<img src="/cetak/logo-bpjs" alt="BPJS Kesehatan">{{end}}</div>
+    <div class="e" style="left:68pt;top:202pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:75pt;top:202pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.NmPPKRujukan}}</div>
+    <div class="e" style="left:0pt;top:202pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Faskes Perujuk</div>
+    <div class="e" style="left:68pt;top:216pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e wrap" style="left:75pt;top:216pt;width:250pt;height:24pt;font-size:10pt;text-align:left">{{.S.NmDiagnosaAwal}}</div>
+    <div class="e" style="left:0pt;top:216pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Diagnosa Awal</div>
+    <div class="e" style="left:68pt;top:241pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e wrap" style="left:75pt;top:241pt;width:214pt;height:28pt;font-size:10pt;text-align:left">{{.S.Catatan}}</div>
+    <div class="e" style="left:0pt;top:241pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Catatan</div>
+    <div class="e" style="left:0pt;top:282pt;width:341pt;height:11pt;font-size:7pt;text-align:left">*Saya Menyetujui BPJS Kesehatan menggunakan informasi Medis Pasien jika diperlukan.</div>
+    <div class="e" style="left:0pt;top:291pt;width:341pt;height:11pt;font-size:7pt;text-align:left">*SEP bukan sebagai bukti penjaminan peserta</div>
+    <div class="e" style="left:0pt;top:301pt;width:48pt;height:11pt;font-size:7pt;text-align:left">Cetakan ke 1</div>
+    <div class="e" style="left:48pt;top:301pt;width:216pt;height:11pt;font-size:7pt;text-align:left">{{.Cetak}}</div>
+    <div class="e" style="left:392pt;top:194pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:400pt;top:194pt;width:132pt;height:13pt;font-size:10pt;text-align:left">{{.S.KlsHak}}</div>
+    <div class="e" style="left:325pt;top:194pt;width:66pt;height:13pt;font-size:10pt;text-align:left">Kls. Hak</div>
+    <div class="e" style="left:325pt;top:238pt;width:206pt;height:13pt;font-size:10pt;text-align:center">Pasien/Keluarga Pasien</div>
+    <div class="e" style="left:392pt;top:208pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:325pt;top:208pt;width:66pt;height:13pt;font-size:10pt;text-align:left">Kls. Rawat</div>
+    <div class="e" style="left:400pt;top:208pt;width:132pt;height:13pt;font-size:10pt;text-align:left">{{.S.KlsRawat}}</div>
+    <div class="e" style="left:392pt;top:222pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:325pt;top:222pt;width:66pt;height:13pt;font-size:10pt;text-align:left">Penjamin</div>
+    <div class="e" style="left:400pt;top:222pt;width:132pt;height:13pt;font-size:10pt;text-align:left">{{.S.Penjamin}}</div>
+    <div class="e" style="left:68pt;top:188pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:0pt;top:188pt;width:67pt;height:13pt;font-size:10pt;text-align:left">Dokter</div>
+    <div class="e" style="left:75pt;top:188pt;width:250pt;height:13pt;font-size:10pt;text-align:left">{{.S.NmDPJP}}</div>
+    <div class="e" style="left:325pt;top:307pt;width:204pt;height:13pt;font-size:10pt;text-align:center">{{.S.NamaPasien}}</div>
+    <div class="e" style="left:392pt;top:180pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:325pt;top:180pt;width:66pt;height:13pt;font-size:10pt;text-align:left">Poli Perujuk</div>
+    <div class="e" style="left:400pt;top:180pt;width:7pt;height:13pt;font-size:10pt;text-align:left">-</div>
+    <div class="e" style="left:400pt;top:148pt;width:132pt;height:10pt;font-size:8pt;text-align:left">{{.S.JnsKunjungan}}</div>
+    <div class="e wrap" style="left:400pt;top:159pt;width:132pt;height:20pt;font-size:8pt;text-align:left">{{.S.Flag}}</div>
+    <div class="e" style="left:392pt;top:148pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:325pt;top:148pt;width:66pt;height:13pt;font-size:10pt;text-align:left">Jns.Kunjungan</div>
+    <div class="e" style="left:325pt;top:134pt;width:66pt;height:13pt;font-size:10pt;text-align:left">Jns. Rawat</div>
+    <div class="e" style="left:392pt;top:134pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:400pt;top:134pt;width:132pt;height:13pt;font-size:10pt;text-align:left">{{.S.JnsRawat}}</div>
+    <div class="e" style="left:400pt;top:120pt;width:132pt;height:13pt;font-size:10pt;text-align:left">{{.S.Peserta}}</div>
+    <div class="e" style="left:392pt;top:120pt;width:7pt;height:13pt;font-size:10pt;text-align:left">:</div>
+    <div class="e" style="left:325pt;top:120pt;width:66pt;height:13pt;font-size:10pt;text-align:left">Peserta</div>
+    <div class="e" style="left:325pt;top:105pt;width:206pt;height:13pt;font-size:10pt;text-align:center">{{.S.PRB}}</div>
+</div></div>
+<script>
+  window.addEventListener('load', function () { setTimeout(function () { window.focus(); window.print(); }, 300); });
+</script>
+</body>
+</html>

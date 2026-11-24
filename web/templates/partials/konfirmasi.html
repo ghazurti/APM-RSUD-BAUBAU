@@ -1,0 +1,32 @@
+<div class="kartu">
+  <h2 class="judul">Apakah ini data Anda?</h2>
+  <dl class="mt-6 divide-y divide-slate-200 text-2xl">
+    <div class="baris"><dt>Nama</dt><dd class="text-4xl font-bold">{{.Nama}}</dd></div>
+    <div class="baris"><dt>No. Rekam Medis</dt><dd>{{.NoRM}}</dd></div>
+    <div class="baris"><dt>No. Kartu BPJS</dt><dd>{{.NoKartu}}</dd></div>
+    <div class="baris"><dt>Jenis Peserta</dt><dd>{{.Jenis}}</dd></div>
+    <div class="baris"><dt>Kelas</dt><dd>{{.Kelas}}</dd></div>
+    <div class="baris"><dt>Status</dt><dd class="font-semibold text-emerald-700">{{.Status}}</dd></div>
+    <div class="baris"><dt>Faskes Tingkat 1</dt><dd>{{.Faskes}}</dd></div>
+  </dl>
+  {{if .MJKN}}
+  <div class="mjkn-booking-box">
+    <div class="text-2xl font-bold text-emerald-700">✔ Booking Mobile JKN Ditemukan</div>
+    <div class="mjkn-booking-grid">
+      <div>Kode Booking: <b>{{.MJKN.NoBooking}}</b></div>
+      <div>No. Antrean: <b>{{.MJKN.NoReg}}</b></div>
+      <div>Poli: <b>{{.MJKN.NmPoliRS}}</b></div>
+      <div>Dokter: <b>{{.MJKN.NmDokterRS}}</b></div>
+    </div>
+  </div>
+  <div class="mt-8 grid grid-cols-3 gap-4">
+    <button hx-get="/batal" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">Bukan Saya</button>
+    <button hx-post="/mjkn-lanjut" hx-disabled-elt="this" class="tombol col-span-2 bg-emerald-700 py-6 text-4xl text-white active:bg-emerald-900">Ya, Check-in &amp; Buat SEP</button>
+  </div>
+  {{else}}
+  <div class="mt-8 grid grid-cols-3 gap-4">
+    <button hx-get="/batal" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">Bukan Saya</button>
+    <button hx-get="/jenis" class="tombol col-span-2 bg-emerald-700 py-6 text-4xl text-white active:bg-emerald-900">Ya, Lanjut</button>
+  </div>
+  {{end}}
+</div>

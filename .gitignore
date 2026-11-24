@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+!agent.env.example
+.env copy.example
+agent.env
+logs/
+dist/
+node_modules/
+cetak.bin
+.DS_Store
+*.log
+*.exe
+*.bak

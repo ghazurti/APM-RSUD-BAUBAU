@@ -1,0 +1,31 @@
+<div class="kartu">
+  <h2 class="judul">Pilih Poli &amp; Dokter</h2>
+  <p class="mt-2 text-xl text-slate-600">Jadwal praktik hari ini</p>
+  <div class="mt-6 grid max-h-[55vh] gap-4 overflow-y-auto">
+    {{range .List}}
+      {{if .Bisa}}
+      <button hx-post="/pilih-jadwal" hx-vals='{"dokter":"{{.KdDokter}}","poli":"{{.KdPoli}}","jam":"{{.JamMulai}}"}'
+              class="tombol pilihan flex items-center justify-between">
+        <span>
+          {{.NmDokter}}
+          <span class="sub">{{.NmPoli}} · {{.JamPraktek}}</span>
+        </span>
+        <span class="rounded-xl bg-emerald-100 px-4 py-2 text-xl text-emerald-800">Sisa {{.Sisa}}</span>
+      </button>
+      {{else}}
+      <div class="flex items-center justify-between rounded-2xl bg-slate-200 px-6 py-5 text-2xl text-slate-500">
+        <span>{{.NmDokter}}<span class="block text-lg">{{.NmPoli}} · {{.JamPraktek}}</span></span>
+        <span class="text-xl">{{.Alasan}}</span>
+      </div>
+      {{end}}
+    {{else}}
+      <div class="rounded-2xl bg-amber-100 px-6 py-8 text-center text-2xl text-amber-900">
+        Tidak ada jadwal dokter untuk poli tujuan hari ini.<br>Silakan ke loket pendaftaran.
+      </div>
+    {{end}}
+  </div>
+  <div class="mt-8 grid grid-cols-2 gap-4">
+    <button hx-get="{{.Kembali}}" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">← Kembali</button>
+    <button hx-get="/batal" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">Batal</button>
+  </div>
+</div>

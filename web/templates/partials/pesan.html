@@ -1,0 +1,7 @@
+<div class="kartu text-center" x-data="hitungMundur(20)">
+  <div class="text-7xl">ℹ️</div>
+  <p class="mt-6 text-3xl font-semibold leading-snug">{{.Msg}}</p>
+  <button hx-get="/batal" class="tombol mx-auto mt-10 w-full max-w-xl bg-emerald-700 py-6 text-3xl text-white active:bg-emerald-900">
+    Kembali ke Awal (<span x-text="s"></span>)
+  </button>
+</div>

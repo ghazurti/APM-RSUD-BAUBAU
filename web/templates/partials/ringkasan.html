@@ -1,0 +1,22 @@
+<div class="kartu">
+  <h2 class="judul">{{if .S.MJKN}}Periksa Kembali Check-in Mobile JKN{{else}}Periksa Kembali Pendaftaran Anda{{end}}</h2>
+  <dl class="mt-6 divide-y divide-slate-200 text-2xl">
+    {{if .S.MJKN}}
+    <div class="baris"><dt>Jalur</dt><dd class="font-bold text-emerald-700">Mobile JKN (Booking {{.S.MJKN.NoBooking}} · Antrean {{.S.MJKN.NoReg}})</dd></div>
+    {{end}}
+    <div class="baris"><dt>Nama</dt><dd class="font-bold">{{.Nama}}</dd></div>
+    <div class="baris"><dt>No. RM</dt><dd>{{.S.Pasien.NoRM}}</dd></div>
+    <div class="baris"><dt>Poli</dt><dd class="font-bold">{{.S.Jadwal.NmPoli}}</dd></div>
+    <div class="baris"><dt>Dokter</dt><dd>{{.S.Jadwal.NmDokter}}</dd></div>
+    <div class="baris"><dt>Jam Praktik</dt><dd>{{.S.Jadwal.JamPraktek}}</dd></div>
+    {{if .S.Rujukan}}<div class="baris"><dt>No. Rujukan</dt><dd>{{.S.Rujukan.NoKunjungan}}</dd></div>{{end}}
+    {{if .S.Kontrol}}<div class="baris"><dt>No. Surat Kontrol</dt><dd>{{.S.Kontrol.NoSurat}}</dd></div>{{end}}
+  </dl>
+  <div class="mt-8 grid grid-cols-3 gap-4">
+    <button hx-get="{{if .S.MJKN}}/konfirmasi{{else}}/jadwal{{end}}" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">← Kembali</button>
+    <button hx-post="/proses" hx-disabled-elt="this"
+            class="tombol col-span-2 bg-emerald-700 py-6 text-4xl text-white active:bg-emerald-900 disabled:bg-slate-400">
+      {{if .S.MJKN}}Check-in &amp; Buat SEP{{else}}Daftar Sekarang{{end}}
+    </button>
+  </div>
+</div>

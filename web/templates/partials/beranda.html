@@ -1,0 +1,60 @@
+<div data-beranda class="kiosk-home">
+  {{if .Info}}<div class="w-full max-w-3xl rounded-2xl bg-amber-100 px-6 py-4 text-center text-2xl text-amber-900">{{.Info}}</div>{{end}}
+
+  <div class="kiosk-home-title">
+    <h1>Selamat Datang</h1>
+    <p>Silakan sentuh jalur pendaftaran sesuai kebutuhan Anda</p>
+  </div>
+
+  <div class="kiosk-grid-2">
+    <button hx-get="/identitas?mode=onsite" class="kiosk-card-btn kiosk-card-onsite">
+      <div>
+        <div class="kiosk-icon-badge" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2.5"></rect>
+            <path d="M6 10h6"></path>
+            <path d="M6 14h4"></path>
+            <path d="M16 9v6"></path>
+            <path d="M13 12h6"></path>
+          </svg>
+        </div>
+        <div class="kiosk-card-title">Pasien BPJS Onsite</div>
+        <div class="kiosk-card-desc">Daftar langsung hari ini menggunakan rujukan FKTP, antar RS, atau surat kontrol.</div>
+      </div>
+      <span class="kiosk-card-cta">Daftar Sekarang →</span>
+    </button>
+
+    <button hx-get="/mjkn-checkin" class="kiosk-card-btn kiosk-card-mjkn">
+      <div>
+        <div class="kiosk-icon-badge" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2.5"></rect>
+            <path d="M9 11l2 2 4-4"></path>
+            <path d="M12 18h.01"></path>
+          </svg>
+        </div>
+        <div class="kiosk-card-title">Check-in Mobile JKN</div>
+        <div class="kiosk-card-desc">Sudah mendaftar lewat aplikasi Mobile JKN. Scan QR check-in lalu cetak SEP.</div>
+      </div>
+      <span class="kiosk-card-cta">Check-in &amp; Cetak SEP →</span>
+    </button>
+  </div>
+
+  <button hx-get="/umum" class="kiosk-secondary-btn">
+    <div class="kiosk-secondary-left">
+      <div class="kiosk-secondary-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M19 8v6"></path>
+          <path d="M16 11h6"></path>
+        </svg>
+      </div>
+      <div>
+        <div style="font-size:1.55rem;font-weight:700;line-height:1.2;">Pasien Umum / Pasien Baru</div>
+        <div style="font-size:1.05rem;color:#64748b;margin-top:0.2rem;">Belum pernah berobat di RSUD Kota Baubau atau non-BPJS</div>
+      </div>
+    </div>
+    <span style="font-size:1.6rem;font-weight:700;color:#64748b;">→</span>
+  </button>
+</div>

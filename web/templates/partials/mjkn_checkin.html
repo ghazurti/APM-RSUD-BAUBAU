@@ -1,0 +1,35 @@
+<div class="kartu">
+  <div class="mjkn-panel">
+    <div class="mjkn-qr-wrap">
+      <img src="/static/checkin-qr.jpg" alt="Scan QR Check-in Mobile JKN RSUD Kota Baubau" class="mjkn-qr-img" />
+    </div>
+
+    <div>
+      <span class="mjkn-pill">Jalur Mobile JKN</span>
+      <h2 class="mt-3 text-4xl font-bold" style="color:#0f172a;">Check-in &amp; Cetak SEP</h2>
+      <ol class="mjkn-steps">
+        <li class="mjkn-step">
+          <span class="mjkn-step-num">1</span>
+          <span>Silakan <b>Scan QR</b> di samping menggunakan HP Anda.</span>
+        </li>
+        <li class="mjkn-step">
+          <span class="mjkn-step-num">2</span>
+          <span>Tekan tombol <b>Lanjut Buat SEP</b> lalu masukkan <b>No. Kartu BPJS / NIK</b>.</span>
+        </li>
+        <li class="mjkn-step">
+          <span class="mjkn-step-num">3</span>
+          <span>Lakukan verifikasi biometrik bila diminta, lalu ambil <b>karcis &amp; SEP</b>.</span>
+        </li>
+      </ol>
+
+      <div class="mjkn-actions">
+        <button hx-get="/identitas?mode=mjkn" class="mjkn-btn-primary">
+          Lanjut Buat SEP →
+        </button>
+        <button hx-get="/beranda" class="mjkn-btn-back">
+          ← Kembali ke Beranda
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Anjungan Pendaftaran Mandiri</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <link rel="stylesheet" href="/static/kiosk.css">
+  <script src="/static/htmx.min.js"></script>
+  <script defer src="/static/alpine.min.js"></script>
+</head>
+<body class="min-h-screen bg-slate-100 pb-10 text-slate-900 select-none"
+      hx-target="#layar" hx-swap="innerHTML" hx-indicator="#loading"
+      x-data="kiosk({{.Idle}})" @pointerdown.window="reset()" @keydown.window="reset()">
+
+  <header class="kiosk-header">
+    <div class="kiosk-brand">
+      <img src="/static/logo-rsud.jpg" alt="Logo RSUD Kota Baubau" class="kiosk-logo">
+      <div>
+        <div class="text-3xl font-bold tracking-tight">{{.RS}}</div>
+        <div class="text-xl text-emerald-100">Anjungan Pendaftaran Mandiri Pasien BPJS</div>
+      </div>
+    </div>
+    <div class="text-right" style="flex-shrink:0;">
+      <div class="text-4xl font-bold tabular-nums" x-text="jam"></div>
+      <div class="text-lg text-emerald-100" x-text="tanggal"></div>
+    </div>
+  </header>
+
+  <main id="layar" class="mx-auto max-w-5xl px-6 py-4">
+    {{embed}}
+  </main>
+
+  <div id="loading" class="loading fixed inset-0 z-50 flex-col items-center justify-center bg-slate-900/70 text-white">
+    <div class="h-24 w-24 animate-spin rounded-full border-8 border-white/30 border-t-white"></div>
+    <div class="mt-8 text-3xl font-semibold">Mohon tunggu…</div>
+    <div class="mt-2 text-xl text-slate-200">Jangan tinggalkan anjungan</div>
+  </div>
+
+  <footer class="fixed bottom-0 w-full px-8 py-2 text-right text-sm text-slate-400">{{.Kiosk}}</footer>
+
+<script>
+  // Hitung mundur lalu kembali ke beranda. Timer dihentikan saat layar diganti (destroy / elemen hilang).
+  function hitungMundur(detik) {
+    return {
+      s: detik, tanya: false, t: null,
+      init() {
+        this.t = setInterval(() => {
+          if (!this.$el.isConnected) { clearInterval(this.t); return; }
+          if (!this.tanya && --this.s <= 0) {
+            clearInterval(this.t);
+            htmx.ajax('GET', '/batal', {target: '#layar', swap: 'innerHTML'});
+          }
+        }, 1000);
+      },
+      destroy() { clearInterval(this.t); },
+    };
+  }
+
+  function kiosk(idle) {
+    return {
+      jam: '', tanggal: '', sisa: idle, sibuk: false, tahanSampai: 0,
+      init() {
+        const tick = () => {
+          const d = new Date();
+          this.jam = d.toLocaleTimeString('id-ID', {hour: '2-digit', minute: '2-digit'});
+          this.tanggal = d.toLocaleDateString('id-ID', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+          // Saat pasien di aplikasi Sidik Jari/Frista, sentuhan tidak sampai ke browser: jangan reset dulu.
+          if (Date.now() < this.tahanSampai) { this.sisa = idle; return; }
+          if (!this.sibuk && !document.querySelector('[data-beranda]') && --this.sisa <= 0) {
+            this.sisa = idle;
+            htmx.ajax('GET', '/batal', {target: '#layar', swap: 'innerHTML'});
+          }
+        };
+        tick(); setInterval(tick, 1000);
+        document.body.addEventListener('tahanIdle', (e) => {
+          this.tahanSampai = Date.now() + (Number(e.detail && e.detail.value) || 180) * 1000;
+        });
+        // Penahan berlaku sampai pasien menekan tombol berikutnya.
+        document.body.addEventListener('htmx:beforeRequest', () => { this.sibuk = true; this.tahanSampai = 0; });
+        document.body.addEventListener('htmx:afterRequest', () => { this.sibuk = false; this.reset(); });
+        document.body.addEventListener('htmx:responseError', () => {
+          htmx.ajax('GET', '/batal', {target: '#layar', swap: 'innerHTML'});
+        });
+        document.body.addEventListener('htmx:sendError', () => {
+          document.getElementById('layar').innerHTML =
+            '<div class="kartu text-center"><p class="text-3xl font-semibold">Server APM tidak dapat dihubungi.</p>' +
+            '<p class="mt-4 text-2xl">Silakan ke loket pendaftaran.</p></div>';
+        });
+      },
+      reset() { this.sisa = idle; },
+    };
+  }
+</script>
+</body>
+</html>

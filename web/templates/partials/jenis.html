@@ -1,0 +1,21 @@
+<div class="kartu">
+  <h2 class="judul">Pilih Jenis Kunjungan</h2>
+  <div class="mt-6 grid gap-5">
+    <button hx-get="/rujukan?jenis=1" class="tombol pilihan">
+      Rujukan Baru dari Puskesmas / Klinik
+      <span class="sub">Membawa surat rujukan dari FKTP</span>
+    </button>
+    <button hx-get="/kontrol" class="tombol pilihan">
+      Kontrol Ulang
+      <span class="sub">Mempunyai surat kontrol untuk hari ini</span>
+    </button>
+    <button hx-get="/rujukan?jenis=4" class="tombol pilihan">
+      Rujukan dari Rumah Sakit Lain
+      <span class="sub">Rujukan antar rumah sakit</span>
+    </button>
+  </div>
+  <div class="mt-8 grid grid-cols-2 gap-4">
+    <button hx-get="/konfirmasi" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">← Kembali</button>
+    <button hx-get="/batal" class="tombol bg-slate-200 py-6 text-3xl active:bg-slate-300">Batal</button>
+  </div>
+</div>
